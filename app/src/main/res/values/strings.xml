@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">Workout log</string>
+    <string name="enter_your_email">Enter your email</string>
+    <string name="sign_up">Dont have an acount ? <u>SignUp</u></string>
+    <string name="enter_your_passward">Enter your passward</string>
+    <string name="first_name">Enter your first name</string>
+    <string name="ast_name">Enter ypur last name</string>
+    <string name="email">Enter your email</string>
+    <string name="passward">In put your passward</string>
+    <string name="confirm_passward">Confirm Passward</string>
+    <string name="back_to_login"><u>Back to logIn</u></string>
+    <string name="signup">sign up </string>
 </resources>
