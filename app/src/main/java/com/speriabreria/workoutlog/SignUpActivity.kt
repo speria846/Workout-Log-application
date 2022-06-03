@@ -1,10 +1,12 @@
 package com.speriabreria.workoutlog
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.ContactsContract
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 
@@ -20,25 +22,29 @@ class SignUpActivity : AppCompatActivity() {
     lateinit var tilConfirm:TextInputLayout
     lateinit var etConfirm:TextInputEditText
     lateinit var btnsignup:Button
+    lateinit var tvlogin:TextView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_sign_up)
         tilName=findViewById(R.id.tilName)
         etName=findViewById(R.id.etName)
         tilname2=findViewById(R.id.tilName2)
         etname2=findViewById(R.id.etname2)
         etEmail=findViewById(R.id.etEmail)
         tilEmail=findViewById(R.id.tilEmail)
-        tilPassward=findViewById(R.id.tilPasward)
+        tilPassward=findViewById(R.id.tilPassward)
         etPassward=findViewById(R.id.etPassward)
         tilConfirm=findViewById(R.id.tilConfirm)
         etConfirm=findViewById(R.id.etConfirm)
         btnsignup=findViewById(R.id.btnsignup)
-
-
+        tvlogin=findViewById(R.id.tvlogin)
         btnsignup.setOnClickListener { validation()}
+        tvlogin.setOnClickListener {
+            var intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+        }
 
     }
+
 
     fun validation(){
         var error = false
@@ -47,9 +53,10 @@ class SignUpActivity : AppCompatActivity() {
         tilEmail.error = null
         tilConfirm.error=null
         tilPassward.error = null
+
         var name = etName.text.toString()
         if (name.isBlank()) {
-            tilName.error = "Name is required"
+            tilName.error = "First Name is required"
             error=true
 
     }
@@ -77,7 +84,7 @@ class SignUpActivity : AppCompatActivity() {
             error=true
 
         }
-        if(error!=true){
+        if(error !=true){
 
         }
 
