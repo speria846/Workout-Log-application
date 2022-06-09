@@ -9,5 +9,5 @@
     <string name="passward">In put your passward</string>
     <string name="confirm_passward">Confirm Passward</string>
     <string name="back_to_login"><u>Back to logIn</u></string>
-    <string name="signup">sign up </string>
+    <string name="signup"><u>sign up</u> </string>
 </resources>

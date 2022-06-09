@@ -26,32 +26,11 @@ class LoginActivity : AppCompatActivity() {
         etEmail=findViewById(R.id.etEmail)
         tilPassward=findViewById(R.id.tilPasward)
         etPassward=findViewById(R.id.etPassward)
-        btnLogin.setOnClickListener { validateLogin() }
         tvSignUp.setOnClickListener {
-            var intent=Intent(this,SignUpActivity::class.java)
+            val intent=Intent(this,SignUpActivity::class.java)
             startActivity(intent)
         }
 
     }
-    fun validateLogin() {
-        var error = false
-        tilEmail.error = null
-        tilPassward.error = null
-        var email = etEmail.text.toString()
-        if (email.isBlank()) {
-            tilEmail.error = "email is required"
-            error=true
-
-        }
-
-        var passward = etPassward.text.toString()
-        if (passward.isBlank()) {
-            tilPassward.error ="passward is required"
-            error=true
-
-        }
-        if(error!=true){
-
-        }
-    }
 }
+
