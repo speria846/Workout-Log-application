@@ -3,6 +3,7 @@ package com.speriabreria.workoutlog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Patterns
 import android.widget.Button
 import android.widget.TextView
 import com.google.android.material.textfield.TextInputEditText
@@ -41,6 +42,10 @@ class SignUpActivity : AppCompatActivity() {
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }
+//        btnsignup.setOnClickListener {
+//            val intent=Intent(this,HomeActivity::class.java)
+//            startActivity(intent                                 )
+//        }
 
     }
     fun validation() {
@@ -69,7 +74,11 @@ class SignUpActivity : AppCompatActivity() {
             error = true
 
         }
-
+//        if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+         tilEmail.error="Not a valid email address"
+            error=true
+        }
 
         val passward = etPassward.text.toString()
         if (passward.isBlank()) {
