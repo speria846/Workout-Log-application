@@ -4,27 +4,25 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.FragmentContainerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.speriabreria.workoutlog.databinding.ActivityHomeBinding
+import com.speriabreria.workoutlog.databinding.ActivityLoginBinding
 
 class HomeActivity : AppCompatActivity() {
-    lateinit var bottom_navigation:BottomNavigationView
-    lateinit var plan_Fragment:FragmentContainerView
+    lateinit var binding:ActivityHomeBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_home)
-        bottom_navigation=findViewById(R.id.bottom_navigation)
-        plan_Fragment=findViewById(R.id.plan_flagment)
+        binding= ActivityHomeBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         castViews()
         setUpBottomNav()
-
     }
     fun castViews(){
-        bottom_navigation=findViewById(R.id.bottom_navigation)
-        plan_Fragment=findViewById(R.id.plan_flagment)
+
 
 
     }
     fun setUpBottomNav(){
-        bottom_navigation.setOnItemSelectedListener { item->
+        binding.bottomNavigation.setOnItemSelectedListener { item->
             when(item.itemId){
                 R.id.plan ->{
                     supportFragmentManager.beginTransaction().replace(R.id.plan_flagment,PlanFragment()).commit()

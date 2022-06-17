@@ -4,96 +4,66 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Patterns
-import android.widget.Button
-import android.widget.TextView
-import com.google.android.material.textfield.TextInputEditText
-import com.google.android.material.textfield.TextInputLayout
+import com.speriabreria.workoutlog.databinding.ActivitySignUpBinding
 
 class SignUpActivity : AppCompatActivity() {
-    lateinit var tilName:TextInputLayout
-    lateinit var etName:TextInputEditText
-    lateinit var tilName2:TextInputLayout
-    lateinit var etname2: TextInputEditText
-    lateinit var tilEmail:TextInputLayout
-    lateinit var etEmail:TextInputEditText
-    lateinit var tilPassward:TextInputLayout
-    lateinit var etPassward:TextInputEditText
-    lateinit var tilConfirm:TextInputLayout
-    lateinit var etConfirm:TextInputEditText
-    lateinit var btnsignup:Button
-    lateinit var tvLogin:TextView
+    lateinit var binding:ActivitySignUpBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_sign_up)
-        tilName=findViewById(R.id.tilName)
-        etName=findViewById(R.id.etName)
-        tilName2=findViewById(R.id.tilName2)
-        etname2=findViewById(R.id.etname2)
-        etEmail=findViewById(R.id.etEmail)
-        tilEmail=findViewById(R.id.tilEmail)
-        tilPassward=findViewById(R.id.tilPassward)
-        etPassward=findViewById(R.id.etPassward)
-        tilConfirm=findViewById(R.id.tilConfirm)
-        etConfirm=findViewById(R.id.etConfirm)
-        btnsignup=findViewById(R.id.btnSignup)
-        tvLogin=findViewById(R.id.tvLogin)
-        btnsignup.setOnClickListener { validation()}
-        tvLogin.setOnClickListener {
+        binding= ActivitySignUpBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        binding.btnSignup.setOnClickListener { validation()}
+        binding.tvLogin.setOnClickListener {
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }
-//        btnsignup.setOnClickListener {
-//            val intent=Intent(this,HomeActivity::class.java)
-//            startActivity(intent                                 )
-//        }
 
     }
     fun validation() {
         var error = false
-        tilName.error = null
-        tilName2.error = null
-        tilEmail.error = null
-        tilConfirm.error = null
-        tilPassward.error = null
+        binding.tilName.error = null
+        binding.tilName2.error = null
+        binding.tilEmail.error = null
+        binding.tilConfirm.error = null
+        binding.tilPassward.error = null
 
-        val name = etName.text.toString()
+        val name = binding.etName.text.toString()
         if (name.isBlank()) {
-            tilName.error = "First Name is required"
+            binding.tilName.error = "First Name is required"
             error = true
 
         }
-        val name2 = etname2.text.toString()
+        val name2 = binding.etname2.text.toString()
         if (name2.isBlank()) {
-            tilName2.error = "Name is required"
+            binding.tilName2.error = "Name is required"
             error = true
 
         }
-        val email = etEmail.text.toString()
+        val email = binding.etEmail.text.toString()
         if (email.isBlank()) {
-            tilEmail.error = "Email is required"
+            binding.tilEmail.error = "Email is required"
             error = true
 
         }
-//        if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
         if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
-         tilEmail.error="Not a valid email address"
+         binding.tilEmail.error="Not a valid email address"
             error=true
         }
 
-        val passward = etPassward.text.toString()
+        val passward = binding.etPassward.text.toString()
         if (passward.isBlank()) {
-            tilPassward.error = "Enter the passward"
+            binding.tilPassward.error = "Enter the passward"
             error=true
 
 
         }
-        val confirm = etConfirm.text.toString()
+        val confirm = binding.etConfirm.text.toString()
         if (confirm.isBlank()) {
-            tilConfirm.error = "Enter the correct passward"
+            binding.tilConfirm.error = "Enter the correct passward"
             error=true
         }
             if (passward!=confirm){
-                tilConfirm.error="doesnot match"
+                binding.tilConfirm.error="doesn't match"
                 error=true
             }
 
